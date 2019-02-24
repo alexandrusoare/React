@@ -12,7 +12,7 @@ class Student extends React.Component{
           <th>{this.props.prenume}</th>
           <th>{this.props.varsta}</th>
           <th>{this.props.medie}</th>
-          <button onClick={this.props.stergeStudent} style={{'margin-left':'38%'}} type="button" className="btn btn-danger">Sterge</button>
+          <button onClick={ ()=> {this.props.stergeStudent(this.props.nume)}} style={{'margin-left':'38%'}} type="button" className="btn btn-danger">Sterge</button>
         </tr>
       );
     }
@@ -57,7 +57,7 @@ class Grupa extends React.Component{
 
   stergeStudent(e){
     this.setState({studenti: this.state.studenti.filter((x)=>{
-      return x !== e.target.value})});
+      return x.nume !== e})});
     }
   
   
@@ -92,7 +92,8 @@ class Grupa extends React.Component{
       var varsta = document.getElementById('varsta');
       var medie = document.getElementById('medie')
 
-     if (nume.value == null || prenume.value == null || varsta.value == null || medie.value == null){
+     if (nume.value === '' || prenume.value === ''
+     || varsta.value === '' || medie.value === ''){
       alert("Unul sau mai multe campuri nu au fost completate!");
       return;}
       else if (typeof(nume.value) !== 'string' || typeof(prenume.value) !== 'string' || isNaN(parseInt(varsta.value)) === true || isNaN(parseFloat(medie.value)) === true){
