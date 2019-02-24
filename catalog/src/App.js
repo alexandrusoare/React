@@ -48,7 +48,7 @@ class Grupa extends React.Component{
     .then(result=>{
       this.setState({
         isLoaded : true,
-        studenti : result.students.array.map(element => {element.id = ID();
+        studenti : result.students.map(element => {element.key = ID();
         return element;} )
       });
     },
