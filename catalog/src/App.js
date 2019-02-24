@@ -1,18 +1,22 @@
 import React, { Component } from 'react';
 import './App.css';
 
+var ID = function () {
+  return '_' + Math.random().toString(36).substr(2, 9);
+};
+
 class Student extends React.Component{
   constructor(props){
     super(props)}
 
     render(){
       return(
-        <tr>
+        <tr key = {this.props.key}>
           <th>{this.props.nume}</th>
           <th>{this.props.prenume}</th>
           <th>{this.props.varsta}</th>
           <th>{this.props.medie}</th>
-          <button onClick={ ()=> {this.props.stergeStudent(this.props.nume)}} style={{'margin-left':'38%'}} type="button" className="btn btn-danger">Sterge</button>
+          <button onClick={ ()=> {this.props.stergeStudent(this.props.key)}} style={{'margin-left':'38%'}} type="button" className="btn btn-danger">Sterge</button>
         </tr>
       );
     }
@@ -44,7 +48,8 @@ class Grupa extends React.Component{
     .then(result=>{
       this.setState({
         isLoaded : true,
-        studenti : result.students
+        studenti : result.students.array.map(element => {element.id = ID();
+        return element;} )
       });
     },
     (error)=>{
@@ -57,7 +62,7 @@ class Grupa extends React.Component{
 
   stergeStudent(e){
     this.setState({studenti: this.state.studenti.filter((x)=>{
-      return x.nume !== e})});
+      return x.key !== e})});
     }
   
   
@@ -264,7 +269,6 @@ sortDupaMedie(ev){
     } else if (!isLoaded) {
       return <div>Loading...</div>;
     } else {
-
     return(
       <div style={{"margin": "30px"}}>
       <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"/>
