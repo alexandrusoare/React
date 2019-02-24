@@ -13,7 +13,7 @@ class Student extends React.Component{
           <th>{this.props.medie}</th>
           <button onClick={this.stergeStudent} style={{'margin-left':'38%'}} type="button" class="btn btn-danger">Sterge</button>
         </tr>
-      )
+      );
     }
   }
 
@@ -22,28 +22,10 @@ class Grupa extends React.Component{
   constructor(props){
     super(props);
     this.state = {
-      studenti:[
-        {
-          'nume': 'Soare',
-          'prenume': 'Alexandru',
-          'varsta': 20,
-          'medie': 9.3
-        },{
-          'nume': 'Razvan',
-          'prenume': 'Ionut',
-          'varsta': 18,
-          'medie': 9.0
-        },
-        {'nume': 'Margasoiu',
-        'prenume': 'Luca',
-        'varsta': 19,
-        'medie': 8.7},
-        {'nume': 'Haha',
-        'prenume': 'Stefan',
-        'varsta': 17,
-        'medie': 9.20
-      }]
-    }
+      error : null,
+      isLoaded : false,  
+      studenti: []
+    };
     this.adaugaStudent = this.adaugaStudent.bind(this);
     this.updateNume = this.updateNume.bind(this);
     this.updatePrenume = this.updatePrenume.bind(this);
@@ -54,6 +36,22 @@ class Grupa extends React.Component{
     this.sortDupaVarsta = this.sortDupaVarsta.bind(this);
     this.sortDupaMedie = this.sortDupaMedie.bind(this);
     this.stergeStudent = this.stergeStudent.bind(this);
+  }
+
+  componentDidMount(){
+    fetch("https://demo3305866.mockable.io/tema_studenti_react").then(res => res.json())
+    .then(result=>{
+      this.setState({
+        isLoaded : true,
+        studenti : result.students
+      });
+    },
+    (error)=>{
+        this.setState({
+          isLoaded : true,
+          error
+        });
+    })
   }
 
   stergeStudent(e){
@@ -95,7 +93,7 @@ class Grupa extends React.Component{
      if (nume.value == null || prenume.value == null || varsta.value == null || medie.value == null){
       alert("Unul sau mai multe campuri nu au fost completate!");
       return;}
-      else if (typeof(nume.value) !== 'string' || typeof(prenume.value) !== 'string' || typeof(parseInt(varsta.value)) !== 'number' || typeof(parseFloat(medie.value)) !== 'number'){
+      else if (typeof(nume.value) !== 'string' || typeof(prenume.value) !== 'string' || isNaN(parseInt(varsta.value)) === true || isNaN(parseFloat(medie.value)) === true){
           alert("Unul sau mai multe campuri nu corespund tipului de date cerut");
           return;  
       }
@@ -106,7 +104,7 @@ class Grupa extends React.Component{
       else{
     this.setState({
       "studenti": [...this.state.studenti, {'nume': this.state.new_nume, 'prenume': this.state.new_prenume,
-      'varsta':this.state.new_varsta,'medie':this.state.new_medie}]
+      'varsta':this.state.new_varsta,'media':this.state.new_medie}]
     })
     nume.value='';
     prenume.value='';
@@ -227,10 +225,10 @@ sortDupaMedie(ev){
     this.setState({
       studenti: this.state.studenti.sort((a,b) =>{
 
-        if (a.medie < b.medie) 
+        if (a.media < b.media) 
           return -1;
         
-        if (a.medie > b.medie)
+        if (a.media > b.media)
           return 1;
         
         return 0;
@@ -241,10 +239,10 @@ sortDupaMedie(ev){
     this.setState({
       studenti: this.state.studenti.sort((a,b) =>{ 
 
-        if (a.medie > b.medie) 
+        if (a.media > b.media) 
           return -1;
         
-        if (a.medie < b.medie)
+        if (a.media < b.media)
           return 1;
         
         return 0;
@@ -254,9 +252,16 @@ sortDupaMedie(ev){
   }
 } 
 
- 
+
 
   render(){
+    const { error, isLoaded, studenti } = this.state;
+    if (error) {
+      return <div>Error: {error.message}</div>;
+    } else if (!isLoaded) {
+      return <div>Loading...</div>;
+    } else {
+
     return(
       <div style={{"margin": "30px"}}>
       <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"/>
@@ -270,9 +275,10 @@ sortDupaMedie(ev){
     </tr>
   </thead>
   <tbody>
+      
       {
         this.state.studenti.map((x)=>{
-         return (<Student nume={x.nume} prenume={x.prenume} varsta={x.varsta} medie={x.medie}/>)
+         return (<Student nume={x.nume} prenume={x.prenume} varsta={x.varsta} medie={x.media}/>)
         })
       }
   </tbody>
@@ -298,5 +304,5 @@ sortDupaMedie(ev){
     </div>)
   }
 }
-
+}
 export default Grupa;
