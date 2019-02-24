@@ -11,12 +11,12 @@ class Student extends React.Component{
 
     render(){
       return(
-        <tr key = {this.props.key}>
+        <tr>
           <th>{this.props.nume}</th>
           <th>{this.props.prenume}</th>
           <th>{this.props.varsta}</th>
           <th>{this.props.medie}</th>
-          <button onClick={ ()=> {this.props.stergeStudent(this.props.key)}} style={{'margin-left':'38%'}} type="button" className="btn btn-danger">Sterge</button>
+          <button onClick={ ()=> {this.props.stergeStudent(this)}} style={{'margin-left':'38%'}} type="button" className="btn btn-danger">Sterge</button>
         </tr>
       );
     }
@@ -62,7 +62,7 @@ class Grupa extends React.Component{
 
   stergeStudent(e){
     this.setState({studenti: this.state.studenti.filter((x)=>{
-      return x.key !== e})});
+      return x.key !== e._reactInternalFiber.key})});
     }
   
   
@@ -95,7 +95,7 @@ class Grupa extends React.Component{
       var nume = document.getElementById('nume');
       var prenume = document.getElementById('prenume');
       var varsta = document.getElementById('varsta');
-      var medie = document.getElementById('medie')
+      var medie = document.getElementById('medie');
 
      if (nume.value === '' || prenume.value === ''
      || varsta.value === '' || medie.value === ''){
@@ -284,7 +284,7 @@ sortDupaMedie(ev){
   <tbody>
       {
         this.state.studenti.map((x)=>{
-         return (<Student nume={x.nume} prenume={x.prenume} varsta={x.varsta} medie={x.media} stergeStudent={this.stergeStudent}/>)
+         return (<Student key={x.key} nume={x.nume} prenume={x.prenume} varsta={x.varsta} medie={x.media} stergeStudent={this.stergeStudent}/>)
         })
       }
   </tbody>
