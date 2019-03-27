@@ -1,0 +1,280 @@
+#header{
+    width:95%;
+    margin-right: auto;
+    margin-left: auto;
+    position: relative;
+    height: 70px;
+    box-sizing: border-box;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.navbarr{
+	height: 70px;
+	box-sizing: border-box;
+    display: block;
+    width: 95%;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+#logo{
+    font-family: Calligraffitti;
+	font-size: 50px;
+	left:3%;
+	position: absolute;
+    display: inline-block;
+    color:#1a1a1a;
+    font-weight: 400;
+    top: 5px;    
+}
+
+.elementlistt{
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	display: inline-block;
+	position: absolute;
+    right:10%;
+}
+
+nav ul li{
+    display: inline-block;
+}
+
+ #addSpotButton{
+    padding: 10px;
+    background:  #007aff;
+    color: white;
+    border: none;
+    font-weight: bold;
+    border-radius: .25rem;
+    margin-top: 16%;
+}
+
+#avatar{
+    height:50px;
+    border-radius: 50%;
+    border: none;
+    position: relative;
+    margin-left: 95%;
+    margin-top: 10px;
+} 
+
+#location{
+    font-family: Roboto;
+    font-size: 48px;
+    font-weight: 700;
+    line-height: 58px;
+    color: #1a1a1a;
+}
+
+#tableContainer{
+    position: relative;
+    width:85%;
+    margin-left:auto;
+    margin-right:auto;
+}
+
+#sign-out{
+    position: absolute !important;
+    right: 3%;
+    top: 9%;
+    background: white;
+    box-shadow: 5px 5px 5px #666;
+    padding: 5px;
+    border: none;
+    box-shadow: 5px solid black;
+    color: red;
+    z-index: 99;
+}
+
+.glyphicon{
+    color:red;
+}
+
+.headtab{
+    width: 16.66%;
+}
+
+.arrow-up{
+ display: inline-block;
+  width: 0; 
+  height: 0; 
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-bottom: 5px solid black;
+  margin-left: 10px;
+  margin-bottom: 10px;
+}
+
+.arrow-down{
+  display:inline-block;
+  width: 0; 
+  height: 0; 
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 5px solid black;
+  margin-top: 10px;
+  margin-left: -10px;
+}
+
+#containerSearch{
+    margin-bottom: 3%;
+    position: relative;
+    margin-top: -10px;
+    width:30%;
+    display: inline-block;
+    background: #E4E7E9;
+}
+
+#searchbar{
+    width: 90%;
+    background: #E4E7E9;
+    border: none;
+    padding: 5px;
+}
+
+#lupa{
+    width: 9%;
+    height: 9%;
+    position: relative;
+}
+
+#searchbar::placeholder{
+    position: relative;
+    text-align: center;
+    color: black;
+    font-weight: 600;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+#favoritesButton{
+    position: absolute;
+    bottom:0;
+    width: 100%;
+    background: #E8B100;
+    padding:10px;
+    font-weight: bold;
+    border: none;
+    color: white;
+}
+
+#regularButton{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background: red;
+    font-weight: bold;
+    border: none;
+    color: white;
+}
+
+.checked{
+    color: yellow;
+}
+
+#addSpotContainer{
+    width: 250px;
+    height: 400px;
+    position: absolute;
+    top: 16%;
+    left: 40%;
+    z-index: 99;
+    background: white;
+    border-radius: .25rem;
+    box-shadow: 5px 5px 5px #666;
+    padding:10px;
+}
+
+.inputContainer{
+    margin-top: 2%;
+}
+
+.formspan{
+    font-weight: bold;
+}
+
+.forminput{
+
+    border: none;
+    border-bottom: 2px solid gray;
+}
+
+.forminput:focus{
+    border-bottom: 2px solid #007aff;
+    outline: none; 
+}
+
+.btncont{
+    margin-left:40%;
+    margin-top: 2%;
+}
+
+.btncont button{
+    border: none;
+    background: white;
+    margin-left: 3%;
+    font-weight: bold;
+}
+
+#ConfirmButton{
+    color: #007aff;
+}
+
+#CancelButton{
+    color: red;
+}
+
+#filterbutton{
+    z-index: 150;
+    position: absolute;
+    right: 1%;
+    top: 5%;
+    background: white;
+    border: none;
+    padding: 5px 15px 5px 15px;
+    box-shadow: 2px 2px 2px #666;
+    font-weight: 600;
+}
+
+#filterimg{
+    width: 15px;
+    height: 15px;
+    margin-bottom: 2px;
+    margin-right: 2px;
+}
+
+#filteroptions{
+    z-index: 150;
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    background: white;
+    border: none;
+    box-shadow: 2px 2px 2px #666;
+    right: 1%;
+    top: 5%;
+}
+
+.forminputfil{
+    width: 100%;
+    border: none;
+    border-bottom: 2px solid gray;
+}
+
+.forminputfil:focus{
+    border-bottom: 2px solid #007aff;
+    outline: none; 
+}
+
+#applyfil{
+    display: inline-block;
+    position: relative;
+    margin-left: 20%;
+    margin-right: auto;
+    background: white;
+    font-weight: 600;
+    border: none;
+    box-shadow: 2px 2px 2px #666;
+}

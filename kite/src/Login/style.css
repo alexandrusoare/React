@@ -1,0 +1,41 @@
+#loginCard{
+    width: 25%;
+    height: 50%;
+    position: absolute;
+    bottom: 25%;
+    left: 37.5%;  
+}
+
+#title{
+    text-align: center;
+    font-family: Calligraffitti;
+    color:#1a1a1a;
+    font-weight: 400;
+    font-size: 50px;
+    margin: auto;
+    margin-bottom: 5%;
+}
+
+.inputFields{
+  display: block;
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+  border: 1px solid #979797;
+  border-radius: 5px;
+  padding: 10px;
+  width: 80%;
+  margin-bottom: 10%;
+}
+
+#loginButton{
+    position: absolute;
+    width: 60%;
+    padding: 10px;
+    background-color: #4a90e2;
+    border: 0px;
+    color: white;
+    bottom: 20%;
+    right:20%;
+    font-weight: bold;
+}
